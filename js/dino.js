@@ -1,9 +1,9 @@
 export class Dino {
 
-  apiCall() {
+  apiCall(paragraphs,words) {
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `http://dinoipsum.herokuapp.com/api/?format=json`;
+      let url = `http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=${paragraphs}&words=${words}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -16,8 +16,9 @@ export class Dino {
     });
 
     promise.then(function(response) {
-      let parsed = JSON.parse(response);
-      return parsed;
+      let readable = JSON.parse(response);
+      console.log("READBLE: " + readable);
+      $("#output").text(`Here is your ipsum: ${readable}`);
     }, function(error) {
       return error.message;
     });
