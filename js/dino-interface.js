@@ -6,9 +6,7 @@ $(document).ready(function() {
     let paragraphs = parseInt($("#paragraphs").val());
     let words = parseInt($("#words").val());
     let babydino = new Dino();
-    let sally = babydino.apiCall(paragraphs,words);
-    console.log(babydino.ipsum);
-    $("#output").text(babydino.ipsum);
+    babydino.apiCall(paragraphs,words);
   });
 });
 

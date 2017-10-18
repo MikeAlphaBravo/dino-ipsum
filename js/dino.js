@@ -17,10 +17,9 @@ export class Dino {
 
     promise.then(function(response) {
       let readable = JSON.parse(response);
-      console.log("READBLE: " + readable);
       $("#output").text(`Here is your ipsum: ${readable}`);
     }, function(error) {
-      return error.message;
+      $("#output").text(`There was an error processing your request: ${error.message}`);
     });
   }
 }
